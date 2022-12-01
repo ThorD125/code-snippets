@@ -1,0 +1,100 @@
+[
+    {
+        "label": "sleep",
+        "importPath": "time",
+        "description": "time",
+        "isExtraImport": true,
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "printProgressBar",
+        "kind": 2,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "def printProgressBar(iteration, total, prefix='', suffix='', decimals=1, length=100, fill='█', printEnd=\"\\r\"):\n    percent = (\"{0:.\" + str(decimals) + \"f}\").format(100 *\n                                                     (iteration / float(total)))\n    filledLength = int(length * iteration // total)\n    bar = fill * filledLength + '-' * (length - filledLength)\n    print(f'\\r{prefix} |{bar}| {percent}% {suffix} {progresbars}    ', end=printEnd)\n    if iteration == total:\n        print()\nmaxprogress = 100\nprogressiteration = 0",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "updateProgress",
+        "kind": 2,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "def updateProgress():\n    global progressiteration\n    global progresbars\n    progressiteration += 1\n    if maxprogress == progressiteration:\n        progressiteration = progresori\n        progresbars += 1\n    printProgressBar(progressiteration, maxprogress, prefix='Progress:',\n                     suffix='Complete', length=50)\nmaxprogress = 100",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "maxprogress",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "maxprogress = 100\nprogressiteration = 0\nprogresbars = 0\nprogresori = progressiteration\ndef updateProgress():\n    global progressiteration\n    global progresbars\n    progressiteration += 1\n    if maxprogress == progressiteration:\n        progressiteration = progresori",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "progressiteration",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "progressiteration = 0\nprogresbars = 0\nprogresori = progressiteration\ndef updateProgress():\n    global progressiteration\n    global progresbars\n    progressiteration += 1\n    if maxprogress == progressiteration:\n        progressiteration = progresori\n        progresbars += 1",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "progresbars",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "progresbars = 0\nprogresori = progressiteration\ndef updateProgress():\n    global progressiteration\n    global progresbars\n    progressiteration += 1\n    if maxprogress == progressiteration:\n        progressiteration = progresori\n        progresbars += 1\n    printProgressBar(progressiteration, maxprogress, prefix='Progress:',",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "progresori",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "progresori = progressiteration\ndef updateProgress():\n    global progressiteration\n    global progresbars\n    progressiteration += 1\n    if maxprogress == progressiteration:\n        progressiteration = progresori\n        progresbars += 1\n    printProgressBar(progressiteration, maxprogress, prefix='Progress:',\n                     suffix='Complete', length=50)",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "maxprogress",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "maxprogress = 100\nprogressiteration = 0\nprogresbars = 0\nprogresori = progressiteration\nfor i in range(1000):\n    updateProgress()\n    sleep(0.1)",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "progressiteration",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "progressiteration = 0\nprogresbars = 0\nprogresori = progressiteration\nfor i in range(1000):\n    updateProgress()\n    sleep(0.1)",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "progresbars",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "progresbars = 0\nprogresori = progressiteration\nfor i in range(1000):\n    updateProgress()\n    sleep(0.1)",
+        "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "progresori",
+        "kind": 5,
+        "importPath": "python.progressBar",
+        "description": "python.progressBar",
+        "peekOfCode": "progresori = progressiteration\nfor i in range(1000):\n    updateProgress()\n    sleep(0.1)",
+        "detail": "python.progressBar",
+        "documentation": {}
+    }
+]

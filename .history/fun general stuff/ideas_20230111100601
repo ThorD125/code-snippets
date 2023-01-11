@@ -1,0 +1,6 @@
+file explorer
+-- on click of item
+    if item is file
+        preview file
+else  if folder
+    return folder structure

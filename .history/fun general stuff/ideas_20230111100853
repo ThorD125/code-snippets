@@ -1,0 +1,17 @@
+file explorer
+function on click of item {
+    if (item is file){
+        preview file
+    }
+    else  if (item is folder){
+        return folder structure
+    } else if (item is link) {
+        return linked item or folder
+    } 
+    esle {
+        error in file
+    }
+}
+function on load of folder {
+    
+}

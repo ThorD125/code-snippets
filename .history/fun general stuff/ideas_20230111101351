@@ -1,0 +1,25 @@
+file explorer
+on_click_of_item {
+    if (item is file){
+        preview_file
+    }
+    else  if (item is folder){
+        on_load_of_folder
+        esle {
+            if (item is link) {
+                    return preview_linked_item_or_folde
+                    error_in_file
+            }
+    }
+}
+on_load_of_folder {
+    show_folder_structure
+    + on_click_of_item
+}
+
+show_folder_structure{
+    render all items
+}
+
+
+

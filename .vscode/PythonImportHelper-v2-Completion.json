@@ -8,6 +8,41 @@
         "documentation": {}
     },
     {
+        "label": "urllib.request",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "urllib.request",
+        "description": "urllib.request",
+        "detail": "urllib.request",
+        "documentation": {}
+    },
+    {
+        "label": "clean",
+        "importPath": "cleantext",
+        "description": "cleantext",
+        "isExtraImport": true,
+        "detail": "cleantext",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "wget",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "wget",
+        "description": "wget",
+        "detail": "wget",
+        "documentation": {}
+    },
+    {
         "label": "printProgressBar",
         "kind": 2,
         "importPath": "python.progressBar",
@@ -95,6 +130,69 @@
         "description": "python.progressBar",
         "peekOfCode": "progresori = progressiteration\nfor i in range(1000):\n    updateProgress()\n    sleep(0.1)",
         "detail": "python.progressBar",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "text = open('./toktiklijst.txt', 'r', encoding=\"utf8\")\ntext = text.read()\nfiltered = clean(text, no_emoji=True)\nnew = open('toktiklijst-filtered.txt', 'w')\nnew.write(filtered)\nnew.close()\nwith open('toktiklijst-filtered.txt', 'r') as fin:\n    data = fin.read().splitlines(True)\nwith open('toktiklijst-filtered.txt', 'w') as fout:\n    fout.writelines(data[1:])",
+        "detail": "tiktoklijstcleanr.script",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "text = text.read()\nfiltered = clean(text, no_emoji=True)\nnew = open('toktiklijst-filtered.txt', 'w')\nnew.write(filtered)\nnew.close()\nwith open('toktiklijst-filtered.txt', 'r') as fin:\n    data = fin.read().splitlines(True)\nwith open('toktiklijst-filtered.txt', 'w') as fout:\n    fout.writelines(data[1:])\nfile1 = open('toktiklijst-filtered.txt', 'r')",
+        "detail": "tiktoklijstcleanr.script",
+        "documentation": {}
+    },
+    {
+        "label": "filtered",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "filtered = clean(text, no_emoji=True)\nnew = open('toktiklijst-filtered.txt', 'w')\nnew.write(filtered)\nnew.close()\nwith open('toktiklijst-filtered.txt', 'r') as fin:\n    data = fin.read().splitlines(True)\nwith open('toktiklijst-filtered.txt', 'w') as fout:\n    fout.writelines(data[1:])\nfile1 = open('toktiklijst-filtered.txt', 'r')\nLines = file1.readlines()",
+        "detail": "tiktoklijstcleanr.script",
+        "documentation": {}
+    },
+    {
+        "label": "new",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "new = open('toktiklijst-filtered.txt', 'w')\nnew.write(filtered)\nnew.close()\nwith open('toktiklijst-filtered.txt', 'r') as fin:\n    data = fin.read().splitlines(True)\nwith open('toktiklijst-filtered.txt', 'w') as fout:\n    fout.writelines(data[1:])\nfile1 = open('toktiklijst-filtered.txt', 'r')\nLines = file1.readlines()\ncount = 0",
+        "detail": "tiktoklijstcleanr.script",
+        "documentation": {}
+    },
+    {
+        "label": "file1",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "file1 = open('toktiklijst-filtered.txt', 'r')\nLines = file1.readlines()\ncount = 0\n# Strips the newline character\nfor line in Lines:\n    count += 1\n    name = line.strip().split(',')[1]\n    url = line.strip().split(',')[0]\n    re.match(r'girl', name, re.IGNORECASE)\n    if name == 'girl':",
+        "detail": "tiktoklijstcleanr.script",
+        "documentation": {}
+    },
+    {
+        "label": "Lines",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "Lines = file1.readlines()\ncount = 0\n# Strips the newline character\nfor line in Lines:\n    count += 1\n    name = line.strip().split(',')[1]\n    url = line.strip().split(',')[0]\n    re.match(r'girl', name, re.IGNORECASE)\n    if name == 'girl':\n        continue",
+        "detail": "tiktoklijstcleanr.script",
+        "documentation": {}
+    },
+    {
+        "label": "count",
+        "kind": 5,
+        "importPath": "tiktoklijstcleanr.script",
+        "description": "tiktoklijstcleanr.script",
+        "peekOfCode": "count = 0\n# Strips the newline character\nfor line in Lines:\n    count += 1\n    name = line.strip().split(',')[1]\n    url = line.strip().split(',')[0]\n    re.match(r'girl', name, re.IGNORECASE)\n    if name == 'girl':\n        continue\n    files = f'./output_directory/{name}.xml'",
+        "detail": "tiktoklijstcleanr.script",
         "documentation": {}
     }
 ]

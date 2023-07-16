@@ -4,6 +4,8 @@ import pygetwindow as gw
 import keyboard
 import time
 import numpy as np
+import pyautogui
+from test2 import image_path
 
 
 def check_window_open(window_name):
@@ -30,39 +32,35 @@ def pressMouse():
     pyautogui.mouseUp()
 
 
-def find_image_on_screen(image_path):
-    # Load the target image
-    time.sleep(5)
+def click_image(image_path):
 
-    target_image = cv2.imread(image_path)
+    time.sleep(10)
 
-    # Get the screen dimensions
+    # Load the image
+    template = cv2.imread(image_path, 0)
+
+    # Get the screen resolution
     screen_width, screen_height = pyautogui.size()
 
     # Take a screenshot of the screen
     screenshot = pyautogui.screenshot()
 
-    # Convert the screenshot to an OpenCV image
-    screenshot = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
+    # Convert the screenshot to grayscale
+    screenshot_gray = cv2.cvtColor(np.array(screenshot), cv2.COLOR_BGR2GRAY)
 
-    # Use OpenCV template matching to find the image on the screen
-    result = cv2.matchTemplate(screenshot, target_image, cv2.TM_CCOEFF_NORMED)
-    _, max_val, _, max_loc = cv2.minMaxLoc(result)
+    # Perform template matching
+    result = cv2.matchTemplate(screenshot_gray, template, cv2.TM_CCOEFF_NORMED)
+    _, _, _, max_loc = cv2.minMaxLoc(result)
 
-    # If the image is found on the screen
-    if max_val > 0.8:
-        # Calculate the center of the image
-        image_width = target_image.shape[1]
-        image_height = target_image.shape[0]
-        center_x = max_loc[0] + (image_width // 2)
-        center_y = max_loc[1] + (image_height // 2)
+    # Calculate the middle point of the image
+    image_width, image_height = template.shape[::-1]
+    image_middle_x = max_loc[0] + image_width // 2
+    image_middle_y = max_loc[1] + image_height // 2
 
-        # Move the cursor to the center of the image
-        pyautogui.moveTo(center_x, center_y, 0.89)
-
-    else:
-        print("Image not found on the screen.")
-        exit()
+    # Click the middle of the image
+    click_x = image_middle_x + screen_width // 2
+    click_y = image_middle_y + screen_height // 2
+    pyautogui.click(click_x, click_y)
 
 
 if check_window_open("Warframe"):
@@ -73,11 +71,13 @@ if check_window_open("Warframe"):
 
     pressMouse()
     press('esc')
-    find_image_on_screen("./images/navigation.png")
-    pressMouse()
+    click_image("./images/navigation.png")
+
+    exit(0)
+    # pressMouse()
     print("Navigation button found.")
 
-    find_image_on_screen("./images/ukko.png")
+    wait_for_image("./images/ukko.png")
     pressMouse()
     print("Navigation button found.")
     time.sleep(30)

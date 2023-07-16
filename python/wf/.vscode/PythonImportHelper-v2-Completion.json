@@ -1,0 +1,136 @@
+[
+    {
+        "label": "pyautogui",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pyautogui",
+        "description": "pyautogui",
+        "detail": "pyautogui",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "pygetwindow",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygetwindow",
+        "description": "pygetwindow",
+        "detail": "pygetwindow",
+        "documentation": {}
+    },
+    {
+        "label": "keyboard",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "keyboard",
+        "description": "keyboard",
+        "detail": "keyboard",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "image_path",
+        "importPath": "test2",
+        "description": "test2",
+        "isExtraImport": true,
+        "detail": "test2",
+        "documentation": {}
+    },
+    {
+        "label": "check_window_open",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def check_window_open(window_name):\n    try:\n        gw.getWindowsWithTitle(window_name)\n        return True\n    except gw.PyGetWindowException:\n        return False\ndef wait_for_button_press(button):\n    keyboard.wait(button)\ndef press(button):\n    keyboard.press_and_release(button)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "wait_for_button_press",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def wait_for_button_press(button):\n    keyboard.wait(button)\ndef press(button):\n    keyboard.press_and_release(button)\n    time.sleep(0.3)\ndef pressMouse():\n    time.sleep(1)\n    pyautogui.mouseDown()\n    time.sleep(0.3)\n    pyautogui.mouseUp()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "press",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def press(button):\n    keyboard.press_and_release(button)\n    time.sleep(0.3)\ndef pressMouse():\n    time.sleep(1)\n    pyautogui.mouseDown()\n    time.sleep(0.3)\n    pyautogui.mouseUp()\ndef click_image(image_path):\n    time.sleep(10)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "pressMouse",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def pressMouse():\n    time.sleep(1)\n    pyautogui.mouseDown()\n    time.sleep(0.3)\n    pyautogui.mouseUp()\ndef click_image(image_path):\n    time.sleep(10)\n    # Load the image\n    template = cv2.imread(image_path, 0)\n    # Get the screen resolution",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "click_image",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def click_image(image_path):\n    time.sleep(10)\n    # Load the image\n    template = cv2.imread(image_path, 0)\n    # Get the screen resolution\n    screen_width, screen_height = pyautogui.size()\n    # Take a screenshot of the screen\n    screenshot = pyautogui.screenshot()\n    # Convert the screenshot to grayscale\n    screenshot_gray = cv2.cvtColor(np.array(screenshot), cv2.COLOR_BGR2GRAY)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "wait_for_button_press",
+        "kind": 2,
+        "importPath": "test2",
+        "description": "test2",
+        "peekOfCode": "def wait_for_button_press(button):\n    keyboard.wait(button)\nwait_for_button_press('l')\ndef find_image_on_screen(image_path):\n    while True:\n        location = pyautogui.locateOnScreen(image_path, confidence=0.5)\n        if location is not None:\n            image_center_x = location.left + (location.width / 2)\n            image_center_y = location.top + (location.height / 2)\n            screen_width, screen_height = pyautogui.size()",
+        "detail": "test2",
+        "documentation": {}
+    },
+    {
+        "label": "find_image_on_screen",
+        "kind": 2,
+        "importPath": "test2",
+        "description": "test2",
+        "peekOfCode": "def find_image_on_screen(image_path):\n    while True:\n        location = pyautogui.locateOnScreen(image_path, confidence=0.5)\n        if location is not None:\n            image_center_x = location.left + (location.width / 2)\n            image_center_y = location.top + (location.height / 2)\n            screen_width, screen_height = pyautogui.size()\n            if (\n                image_center_x >= screen_width * 0.4\n                and image_center_x <= screen_width * 0.6",
+        "detail": "test2",
+        "documentation": {}
+    },
+    {
+        "label": "image_path",
+        "kind": 5,
+        "importPath": "test2",
+        "description": "test2",
+        "peekOfCode": "image_path = \"./images/targettran.png\"\n# Call the function to start searching for the image\nfind_image_on_screen(image_path)",
+        "detail": "test2",
+        "documentation": {}
+    }
+]

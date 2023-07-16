@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Thor Demeestere</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer"></script>
+
+</head>
+
+<body class="d-flex">
+    <div class="w-2vw numbers">
+    </div>
+    <script>
+        numbers = document.querySelector(".numbers");
+        numbers.innerHTML = "";
+        for (let i = 0; i < 200; i++) {
+            numbers.innerHTML += `<div class="number ml-auto d-flex text-align-right justify-content-end">${i}</div>`;
+        }
+    </script>
+    <div class="w-99vw p-3">
+        <h1>&lt;CV&gt;</h1>
+        <h2>// Thor Demeestere</h2>
+        <h4>title</h4>
+
+        <my-block title="about me"
+            text="As a software engineer and hacker, I wield the power of code to shape digital landscapes. With lightning precision, I leverage my expertise to drive innovation and ensure robust security, forging a path towards a brighter technological future."></my-block>
+
+        <my-block title="work experience">
+            <my-ul title="Job position" company="company name" date="Date-date">
+                - description
+                - description
+                - description
+                - description
+            </my-ul>
+        </my-block>
+
+        <!-- https://www.etsy.com/de/listing/1474662761/it-resume-cv-for-software-developer -->
+    </div>
+
+</body>
+
+</html>

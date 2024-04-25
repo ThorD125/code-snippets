@@ -1,5 +1,0 @@
-change ip and echo with curl or wget and check if a web page is running
-
-
-powershell /24 range
-0..255 | % { $a = "192.168.144.$_"; write-host “ — — — “; write-host “$a”; 80,443,445,8080 | % {echo ((new-object Net.Sockets.TcpClient).Connect(“$a”,$_)) “Port $_ is open!”} 2>$null}

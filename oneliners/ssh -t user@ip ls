@@ -1,2 +1,0 @@
-ssh -t user@ip "ls -la"
-execute command on remote host
